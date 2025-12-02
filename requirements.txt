@@ -1,14 +1,16 @@
 # Core scientific stack
 numpy==2.0.2
-pandas==1.5.3
+pandas==2.2.2
 scikit-learn==1.6.1
-scipy==1.16.3
+scipy
+protobuf==3.20.3
+xgboost==3.1.1
 
 # Imbalanced data handling
 imbalanced-learn==0.14.0
 
 # Counterfactual explanations
-dice-ml==0.11.0
+dice-ml==0.12.0
 
 # Visualization
 matplotlib==3.10.0
@@ -18,10 +20,14 @@ plotly==5.24.1
 # Explainability and fairness inspection
 shap==0.49.1
 witwidget==1.8.1
+data-auditor==0.1.4
+fairlearn==0.13.0
+holisticai==1.0.14
+
 
 # Notebook / Colab support
-ipywidgets==7.7.1
-google-colab==1.0.0
+#ipywidgets==7.7.1
+#google-colab==1.0.0
 
 # Optional but useful
 missingno==0.5.2
