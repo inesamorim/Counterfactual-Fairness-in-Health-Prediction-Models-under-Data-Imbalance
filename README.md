@@ -52,7 +52,7 @@ jupyter notebook main.ipynb
 │   ├─ heart_disease_preprocessed.csv           
 │   ├─ heart_disease.csv                
 ├─ requirements.txt            # Project dependencies
-└─ report.tex                  # LaTeX report
+└─ report.pdf                  # LaTeX report
 
 ```
 
