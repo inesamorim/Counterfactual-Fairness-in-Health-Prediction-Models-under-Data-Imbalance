@@ -39,6 +39,7 @@ jupyter notebook main.ipynb
 
 ## Project Structure
 
+```bash
 ├─ main.ipynb                  # Notebook with full workflow
 ├─ utils/                      # Utility modules
 │   ├─ __pycache__/            
@@ -53,7 +54,7 @@ jupyter notebook main.ipynb
 ├─ requirements.txt            # Project dependencies
 └─ report.tex                  # LaTeX report
 
-
+```
 
 ## Results Summary
 
