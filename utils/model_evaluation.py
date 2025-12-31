@@ -39,3 +39,29 @@ def evaluate_models(X_train, y_train, X_test, y_test):
 
     results_df = pd.DataFrame(results).T
     return results_df, y_pred_results, y_proba_results, models
+
+def evaluate_model(model, X_test, y_test):
+    y_pred = model.predict(X_test)
+    y_proba = model.predict_proba(X_test)[:, 1]
+
+    results = {
+        "Accuracy": accuracy_score(y_test, y_pred),
+        "F1": f1_score(y_test, y_pred),
+        "ROC_AUC": roc_auc_score(y_test, y_proba),
+        "true_positive_rate": true_positive_rate(y_test, y_pred),
+        "false_positive_rate": false_positive_rate(y_test, y_pred),
+        "selection_rate": selection_rate(y_test, y_pred)
+    }
+    results_df = pd.DataFrame([results])
+
+    return results_df, y_pred, y_proba
+
+def weighted_crosstab(df, protected, target, weights):
+    joint = (
+        df
+        .assign(w=weights)
+        .groupby([protected, target])["w"]
+        .sum()
+        .unstack()
+    )
+    return joint / joint.values.sum()

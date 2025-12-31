@@ -23,13 +23,17 @@ def plot_feature_distributions(df, features, target=None, figsize=(12, 6)):
         if df[feature].dtype == 'object' or df[feature].nunique() < 10: 
             # Categorical variable 
             sns.countplot(data=df, x=feature, hue=feature, legend=False, ax=ax, palette="Set2") 
+            #ax.set_title(f"Distribution of {feature}", fontsize=12) 
+            ax.set_xlabel(feature) 
+            ax.set_ylabel("Count" if df[feature].dtype == 'object' else "Density") 
+            ax.grid(axis='y', linestyle='--', alpha=0.5) 
         else: 
             # Continuous variable 
             if target: sns.kdeplot(data=df, x=feature, hue=feature, legend=False, ax=ax, fill=True, common_norm=False, palette="Set2") 
             else: 
                 sns.histplot(df[feature], ax=ax, kde=True, color="skyblue") 
                 ax.set_title(f"Distribution of {feature}", fontsize=12) 
-                ax.set_xlabel(feature) 
+                #ax.set_xlabel(feature) 
                 ax.set_ylabel("Count" if df[feature].dtype == 'object' else "Density") 
                 ax.grid(axis='y', linestyle='--', alpha=0.5) 
                 # Hide unused subplots 
@@ -40,10 +44,10 @@ def plot_feature_distributions(df, features, target=None, figsize=(12, 6)):
 def plot_feature_distribution_categorical(df, feature, target=None, bins=30):
     plt.figure(figsize=(10, 5))
     if target:
-        sns.countplot(data=df, x=feature, hue=target, palette='Set2')
+        sns.countplot(data=df, x=feature, hue=target, palette='Set2', legend=False)
         plt.title(f'Count of {feature} by {target}')
     else:
-        sns.countplot(data=df, x=feature, palette='Set2')
+        sns.countplot(data=df, x=feature, palette='Set2', hue=feature, legend=False)
         plt.title(f'Count of {feature}')
     plt.xlabel(feature)
     plt.ylabel('Count')
@@ -132,7 +136,7 @@ def categorical_assoc_with_target(df, categorical_features, target):
     assoc_df = assoc_df.sort_values(by='Cramér_V', ascending=False)
     
     plt.figure(figsize=(8, 5))
-    sns.barplot(x=assoc_df['Cramér_V'], y=assoc_df.index, palette='viridis')
+    sns.barplot(x=assoc_df['Cramér_V'], y=assoc_df.index, palette='viridis', hue=assoc_df.index, legend=False)
     plt.title('Cramér’s V Association with Target')
     plt.xlabel('Strength of Association')
     plt.ylabel('Categorical Feature')
