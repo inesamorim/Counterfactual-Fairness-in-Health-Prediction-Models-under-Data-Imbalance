@@ -18,7 +18,7 @@ Install dependencies with:
 
 ```bash
 pip install -r requirements.txt
-
+```
 
 ---
 
@@ -28,11 +28,11 @@ How to run the project or reproduce results.
 1. Clone the repository:
 ```bash
 git clone https://github.com/inesamorim/Counterfactual-Fairness-in-Health-Prediction-Models-under-Data-Imbalance.git
-
+```
 2. Open the Jupyter Notebook:
 ```bash
 jupyter notebook main.ipynb
-
+```
 
 ---
 
@@ -55,3 +55,12 @@ jupyter notebook main.ipynb
 
 
 
+## Results Summary
+
+- Male predictions rely mostly on physiological features.
+
+- Female predictions often require sex flips under imbalance.
+
+- SMOTE improves group-level fairness but increases individual-level sensitivity.
+
+- Stratified splitting stabilizes counterfactual explanations.
